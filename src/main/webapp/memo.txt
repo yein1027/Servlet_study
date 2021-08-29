@@ -1,0 +1,49 @@
+drop table movie;
+create table movie(
+	num number not null  primary key,
+	id varchar2(10) not null,
+	name varchar2(10) not null,
+	age number not null,
+	genre varchar2(40),
+	time varchar2(20),
+	partner number default 1,
+	memo varchar2(50)
+);
+
+drop sequence mv_seq;
+create sequence mv_seq
+	increment by 1
+	start with 1 
+	minvalue 1
+	maxvalue 10000
+	nocache;
+
+insert into movie(num,id,name,age,genre,time,partner,memo)
+values(mv_seq.nextval,'m1','김길동',30,'다큐','10~12',2,'좌석을 넓혀주세요.');
+
+commit;
+col num for 99
+col id for a5
+col name for a8
+col age for 999
+col genre for a16
+col time for a10
+col partner for 99
+col memo for a30
+
+select * from movie;
+
+중복체크 버튼 만들기
+
+가입하기 누르니까 중복체크하세요 뜨고 중복체크 누르니 사용 가능합니다
+아이디에 입력하니까 글씨 사라짐
+중복 아니면 사용 가능합니다 뜨고
+
+추가 누르면 list로 이동 -> 삽입도 되고
+
+체크박스 모두 체크 그거 하고
+아무것도 안 체크하고 수정하면 선택하세요
+
+수정도 하기 -> id는 안 넘어간다
+선택한 넘버만 넘어간다
+성공하면 목록 실패하면 다시 수정 폼으로
